@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Website Intro</title>
+  <link rel="stylesheet" href="intro.css" />
+</head>
+<body>
+  <div id="intro-screen">
+    <video id="intro-video" autoplay muted playsinline>
+      <source src="assets/AVIGO-INTRO.mp4" type="video/mp4" />
+      
+
+    <!-- Optional skip button -->
+    <button id="skip-btn">Skip Intro</button>
+  </div>
+
+  <script>
+    const video = document.getElementById('intro-video');
+    const introScreen = document.getElementById('intro-screen');
+    const skipBtn = document.getElementById('skip-btn');
+
+    // Fade and redirect
+    function goToMain() {
+      
+        // Mark that the intro was played in this session
+        sessionStorage.setItem('introPlayed', 'true');
+        window.location.href = 'home.html';
+      }
+    
+
+    // On video end
+    video.addEventListener('ended', goToMain);
+
+    // On Skip click
+    skipBtn.addEventListener('click', goToMain);
+  </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AVIGO</title>
+  <link rel="stylesheet" href="home.css">
+  <script>
+    // Check if the intro has been played in this session
+    if (!sessionStorage.getItem('introPlayed')) {
+        // Redirect to the intro page if not played
+        window.location.href = 'intro.html';
+    }
+</script>
+</head>
+<body>
+  
+  <div class="background">
+   <div class="container">
+        <nav>
+            <img src="assets/logo.png" class="logo">
+            <ul id="sidemenu">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="booking.html">My Bookings</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="contact.html">contact</a></li>
+             </ul>
+              </nav>
+   
+
+  <!-- Search Flights -->
+  <section class="search-box">
+    <h2>Search Flights</h2>
+    <input id="from" type="text" placeholder="From (e.g. Bangalore)">
+    <input id="to" type="text" placeholder="To (e.g. Delhi)">
+    <input id="date" type="date" class="date-input" placeholder=" Select date">
+    <button  type="button" onclick="searchFlights()">Search</button>
+  </section>
+
+  <!-- Flight Results -->
+  <section class="results">
+    <h2>Available Flights</h2>
+    <ul id="flight-list"></ul>
+  </section>
+</div>
+</div>
+  <script src="home.js"></script>
+  <script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="7RwUFj4IMskUQOrbCNeSP";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+</body>
+</html>

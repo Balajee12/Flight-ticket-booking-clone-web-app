@@ -1,0 +1,181 @@
+section{
+    position: static;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    background-color: #fefefe;
+   background-image: url('assets/login.jpg');
+   background-size: cover;
+   background-position: center;
+   background-attachment: fixed;
+   background-repeat: no-repeat;
+   margin-top: -30px;
+   margin-left: -20px;
+}
+.container{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 10px 20px;
+}
+nav{
+    display: flex;
+    position: fixed;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: fixed;
+    top: 5px;
+    left: 50%;
+    width: 95%;
+    height: 50px;
+    z-index: 500;
+    padding: 5px 15px;
+    transform: translateX(-50%);
+    border-radius: 25px;
+    transition: all 0.5s ease;
+    
+    background:linear-gradient(135deg, rgba(255, 0, 149, 0.368), rgba(236, 185, 4, 0.467));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(255, 255, 255, 0.123);
+    border: 1px solid rgba(145, 144, 144, 0.612);
+    color: #1500ff;
+    text-align: center;
+    
+}
+nav:hover{
+    box-shadow: 0 0 15px 3px #ff007381;
+    border:0.2px solid transparent;
+    background-clip: padding-box;
+}
+
+.logo{
+    width: 130px;
+    height: 35px;
+    border-radius: 10px;
+    margin-top: -11px;
+}
+nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+    margin-top: -5px;
+}
+nav ul li a{
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 20px;
+    color: rgb(0, 41, 124);
+    position: relative;
+}
+nav ul li a::after{
+    content: '';
+    width: 0%;
+    height:4px;
+    background: linear-gradient(135deg, #ff00c8, #ffbb00);
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 0.5s;
+    border-radius: 25px;
+}
+nav ul li a:hover::after{
+    width: 100%;
+}
+
+.content{
+    width: 350px;
+    padding: 30px;
+    border-radius: 12px;
+    background:rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    text-align: center;
+}
+h2{
+    margin-bottom: 20px;
+    color: #333;
+}
+.inputBx {
+    position: relative;
+    margin-bottom: 20px;
+    margin-right: 23px;
+}
+.inputBx label{
+    position: absolute;
+    top:50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 14px;
+    pointer-events: none;
+    transition: .5s
+}
+.inputBx input{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    background:rgba(255, 1, 1, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    font-size: 16px;
+    outline: none;
+}
+.inputBx input:hover{
+    background:rgba(5, 1, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition-duration: 0.2s;
+}
+.inputBx i{
+    position: absolute;
+    top:50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #999;
+}
+.links{
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.links a{
+    color: red;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 14px;
+}
+.links a:hover{
+    text-size-adjust: 15px;
+    color: #1a1a1a;
+    transition-duration: 0.5s;
+    font-weight: 600;
+}
+input[type="submit"]{
+    background: #f40404;
+    color: white;
+    border: none;
+    padding:12px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+input[type="submit"]:hover{
+    background: #0056b3;
+    transition-duration: 0.5s;
+    color: rgb(255, 255, 255);
+}
+.login-status{
+    margin-top: 10px;
+    font-size: 14px;
+    color: red;
+}
+

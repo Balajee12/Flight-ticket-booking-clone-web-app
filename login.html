@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AVIGO</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/1c12915e9f.js" crossorigin="anonymous"></script>
+    <script type="module" src="login.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <img src="assets/logo.png" class="logo">
+            <ul id="sidemenu">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="booking.html">My Bookings</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="contact.html">contact</a></li>
+             </ul>
+              </nav>
+   </div>
+
+<section>
+    <div class="content">
+       <h2><i class="fa-solid fa-user"></i>Sign In</h2>
+       <form>
+       <div class="form">
+            <div class="inputBx">
+                <input type="text"required placeholder="Email" id="email" required/>
+                
+            </div>
+            <div class="inputBx">
+                <input type="password"required placeholder="password" id="password"/>
+               
+            </div>
+            
+            <div class="links">
+                <a href="register.html">New User! Register here.</a>
+                
+            </div>
+            <div class="inputBx">
+                <input type="submit" id="submit" value="Login" />
+            </div>
+            <div id="login-status"></div>
+       </div>
+       </form>
+    </div>
+ </section>
+ <script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="7RwUFj4IMskUQOrbCNeSP";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+</body>
+</html>

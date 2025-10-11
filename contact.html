@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AVIGO</title>
+    <script src="https://kit.fontawesome.com/1c12915e9f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <style>
+    body{
+     background-image: url(assets/first.jpg);
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    margin-top: 0%;
+    
+
+  }   
+    nav{
+    display: flex;
+    position: fixed;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: fixed;
+    top: 5px;
+    left: 50%;
+    width: 95%;
+    height: 50px;
+    z-index: 500;
+    padding: 5px 15px;
+    transform: translateX(-50%);
+    border-radius: 25px;
+    transition: all 0.5s ease;
+    
+    background:linear-gradient(135deg, rgba(255, 0, 149, 0.368), rgba(236, 185, 4, 0.467));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(255, 255, 255, 0.123);
+    border: 2px solid rgba(255, 255, 255, 0.612);
+    color: #1500ff;
+    text-align: center;
+    
+}
+nav:hover{
+    box-shadow: 0 0 15px 3px #ff007381;
+    border:0.2px solid transparent;
+    background-clip: padding-box;
+}
+
+.logo{
+    width: 130px;
+    height: 35px;
+    border-radius: 10px;
+    margin-top: -11px;
+}
+nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+    margin-top: -5px;
+}
+nav ul li a{
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    position: relative;
+}
+nav ul li a::after{
+    content: '';
+    width: 0%;
+    height:4px;
+    background: linear-gradient(135deg, #ff00c8, #ffbb00);
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 0.5s;
+    border-radius: 25px;
+}
+nav ul li a:hover::after{
+    width: 100%;
+}
+    .contact{
+        position: relative;
+         margin: 105px auto 0 auto;
+        width: 550px;
+        height: 490px;
+        padding: 30px;
+        border-radius: 25px;
+        background:linear-gradient(135deg, #ff00c84f, #ffbb004e);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px rgba(253, 253, 253, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: #02326c;
+        text-align: center;
+    }
+    .contact h4{
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+    form input, form textarea{
+    width:95%;
+    border:0;
+    outline:none;
+    background: #ffffff;
+    padding:15px;
+    margin:15px 0;
+    color:#04148e;
+    font-size: 18px;
+    border-radius: 6px;
+    }
+    .button{
+        margin-top: 10px;
+        width: 150px;
+         padding: 10px 25px;
+        border-radius: 25px;
+        background:rgb(0, 119, 255);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px rgba(253, 253, 253, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: #fff;
+        text-align: center;
+    }
+    button:hover{
+        background-color: rgb(255, 123, 0);
+        color: black;
+    }
+    #msg{
+    color:#8cff00;
+    margin-top: 20px;
+    display: block;
+    font-weight: 400;
+}
+
+    </style>
+     <div class="container">
+            <nav>
+                <img src="assets/logo.png" class="logo">
+                <ul id="sidemenu">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="booking.html">My Bookings</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="contact.html">contact</a></li>
+                 </ul>
+                </nav>
+     </div>
+    <div class="contact">
+                <h4>Leave your message here<i class="fa-solid fa-arrow-down"></i></h4>
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="email" name="Email" placeholder="Your Email" required>
+                    <textarea name="Message" rows="6" placeholder="Your message"></textarea>
+                    <button type="submit" class="button">Submit</button>
+                </form>
+                <span id="msg"></span>
+            </div>
+
+ <script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbyX1_9RzKbRZMPeb4gJMQIaJV9FmzNwNKqWixa6H82fxfyLwe3gnc8XZTk0B-WT-w8N/exec'
+  const form = document.forms['submit-to-google-sheet']
+  const msg = document.getElementById('msg')
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    msg.innerHTML = "sending...";
+
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response =>{
+        msg.innerHTML = "Message sent successfully!"
+        setTimeout(function(){
+            msg.innerHTML = ""
+        },5000)
+        form.reset()
+      })
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>  
+<script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="7RwUFj4IMskUQOrbCNeSP";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>         
+</body>
+</html>

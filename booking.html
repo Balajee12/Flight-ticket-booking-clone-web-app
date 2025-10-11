@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AVIGO</title>
+ <script>
+    // Check if the intro has been played in this session
+    if (!sessionStorage.getItem('introPlayed')) {
+        // Redirect to the intro page if not played
+        window.location.href = 'intro.html';
+    }
+</script>
+</head>
+<body>
+
+   <style>
+  
+    body{
+    background-image: url(assets/second.jpg);
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    margin-top: 0%;
+  
+  }  
+    nav{
+    display: flex;
+    position: fixed;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: fixed;
+    top: 5px;
+    left: 50%;
+    width: 95%;
+    height: 50px;
+    z-index: 500;
+    padding: 5px 15px;
+    transform: translateX(-50%);
+    border-radius: 25px;
+    transition: all 0.5s ease;
+    
+    background:linear-gradient(135deg, rgba(255, 0, 149, 0.368), rgba(236, 185, 4, 0.467));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(255, 255, 255, 0.123);
+    border: 1px solid rgba(145, 144, 144, 0.612);
+    color: #1500ff;
+    text-align: center;
+    
+}
+nav:hover{
+    box-shadow: 0 0 15px 3px #ff007381;
+    border:0.2px solid transparent;
+    background-clip: padding-box;
+}
+
+.logo{
+    width: 130px;
+    height: 35px;
+    border-radius: 10px;
+    margin-top: -11px;
+}
+nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+    margin-top: -5px;
+}
+nav ul li a{
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 20px;
+    color: rgb(0, 41, 124);
+    position: relative;
+}
+nav ul li a::after{
+    content: '';
+    width: 0%;
+    height:4px;
+    background: linear-gradient(135deg, #ff00c8, #ffbb00);
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 0.5s;
+    border-radius: 25px;
+}
+nav ul li a:hover::after{
+    width: 100%;
+}
+.search-box{
+   
+    
+    justify-content: center;
+    margin: 100px auto 20px auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 600px;
+    
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+     background:linear-gradient(135deg, rgba(255, 0, 149, 0.368), rgba(236, 185, 4, 0.467));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(255, 255, 255, 0.123);
+    border: 1px solid rgba(145, 144, 144, 0.612);
+    color: rgb(0, 41, 124);
+    text-align: center;
+}
+.results{
+  background: white;
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 600px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+}
+input {
+  display: block;
+  width: 95%;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+button{
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+}
+button {
+  background: #0073e6;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #005bb5;
+}
+  </style>
+    <!-- Navbar -->
+     <div class="container">
+            <nav>
+                <img src="assets/logo.png" class="logo">
+                <ul id="sidemenu">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="booking.html">My Bookings</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="contact.html">contact</a></li>
+                 </ul>
+                </nav>
+     </div>
+
+  <section class="search-box">
+    <h2>Passenger Details</h2>
+     <div id="passenger-details">
+    </div>
+    <div id="flight-info"></div>
+    <form id="booking-form">
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email" required>
+      <input type="number" placeholder="Phone Number" required>
+      <input type="number" placeholder="Number of Passengers" min="1" required>
+      <button onclick="cofirmbooking(event)" type="submit">Confirm Booking</button>
+    </form>
+  </section>
+
+  <section class="results">
+    <h2>Booking Status</h2>
+    <p id="status"></p>
+  </section>
+ 
+  <script>
+    // Sample flights
+    const flights = [
+  
+  { id: "airasiaindia_1", from: "Goa", to: "Lucknow", date: "16/10/2025", time: "10:30 PM", price: "5279" },
+  { id: "airindia_2", from: "Delhi", to: "Goa", date: "10/10/2025", time: "3:45 PM", price: "3456" },
+  { id: "airasiaindia_3", "from": "Delhi", to: "Goa", date: "12/10/2025", time: "9:00 PM", price: "3726" },
+  { id: "starair_4", from: "Mangalore", to: "Jamshedpur", date: "16/10/2025", time: "5:00 PM", price: "5139" },
+  { id: "spicejet_5", from: "Jaipur", to: "Surat", date: "16/10/2025", time: "2:30 PM", price: "7371" },
+  { id: "akasanair_6", from: "Ranchi", to: "Trivandrum", date: "10/10/2025", time: "7:00 AM", price: "3283" },
+  { id: "indigo_7", from: "Goa", to: "Lucknow", date: "18/10/2025", time: "6:15 PM", price: "5823" },
+  { id: "starair_8", from: "Kolkata", to: "Ahmedabad", date: "11/10/2025", time: "6:15 PM", price: "4447" },
+  { id: "starair_9", from: "Indore", to: "Coimbatore", date: "15/10/2025", time: "8:30 PM", price: "5596" },
+  { id: "airasiaindia_10", from: "Ranchi", to: "Trivandrum", date: "14/10/2025", time: "1:00 PM", price: "6900" },
+  
+  { id: "indigo_100", from: "Chennai", to: "Patna", date: "20/10/2025", time: "8:30 PM", price: "3314" },
+  { id: "trujet_101", from: "Visakhapatnam", to: "Guwahati", date: "11/10/2025", time: "2:30 PM", price: "7371" },
+  { id: "indigo_102", from: "Chennai", to: "Vishakhapatnam", date: "12/10/2025", time: "4:30 PM", price: "6900" },
+  { id: "airasiaindia_103", from: "Mangalore", to: "Jamshedpur", date: "15/10/2025", time: "7:45 PM", price: "5352" },
+  { id: "vistara_104", from: "Visakhapatnam", to: "Guwahati", date: "15/10/2025", time: "3:45 PM", price: "3563" },
+  { id: "allianceair_105", from: "Kolkata", to: "Ahmedabad", date: "16/10/2025", time: "8:00 AM", price: "5739" },
+  { id: "trujet_106", from: "Mumbai", to: "Delhi", date: "14/10/2025", time: "4:30 PM", price: "5405" },
+  { id: "spicejet_107", from: "Visakhapatnam", to: "Guwahati", date: "12/10/2025", time: "9:00 PM", price: "5421" },
+  { id: "starair_108", from: "Hyderabad", to: "Chandigarh", date: "16/10/2025", time: "12:15 PM", price: "7771" },
+  { id: "spicejet_109", from: "Bangalore", to: "Chennai", date: "20/10/2025", time: "8:30 PM", price: "4088" },
+  { id: "trujet_110", from: "Chennai", to: "Patna", date: "15/10/2025", time: "4:30 PM", price: "7830" },
+  
+  { id: "vistara_190", from: "Hyderabad", to: "Chandigarh", date: "11/10/2025", time: "11:30 AM", price: "7429" },
+  
+  { id: "trujet_2", from: "Kolkata", to: "Ahmedabad", date: "17/10/2025", time: "1:30 PM", price: "₹6757" },
+  { id: "allianceair_3", from: "Nagpur", to: "Delhi", date: "06/10/2025", time: "9:00 PM", price: "₹7919" },
+  { id: "spicejet_4", from: "Visakhapatnam", to: "Chennai", date: "15/10/2025", time: "10:30 PM", price: "₹7541" },
+  { id: "goair_5", from: "Bhopal", to: "Bangalore", date: "15/10/2025", time: "7:45 PM", price: "₹5006" },
+  { id: "indigo_6", from: "Bangalore", to: "Chennai", date: "16/10/2025", time: "10:00 AM", price: "₹6790" },
+  { id: "vistara_7", from: "Visakhapatnam", to: "Guwahati", date: "17/10/2025", time: "10:00 AM", price: "₹3936" },
+  { id: "spicejet_8", from: "Hyderabad", to: "Chandigarh", date: "11/10/2025", time: "7:45 PM", price: "₹7672" },
+  { id: "airasiaindia_9", from: "Coimbatore", to: "Nagpur", date: "12/10/2025", time: "11:30 AM", price: "₹8057" },
+  { id: "trujet_10", from: "Chennai", to: "Patna", date: "20/10/2025", time: "10:30 PM", price: "₹7646" },
+  { id: "vistara_11", from: "Mumbai", to: "Nagpur", date: "13/10/2025", time: "8:00 AM", price: "₹8247" },
+  { id: "vistara_12", from: "Coimbatore", to: "Chandigarh", date: "16/10/2025", time: "6:00 PM", price: "₹3933" },
+  { id: "vistara_13", from: "Bangalore", to: "Guwahati", date: "18/10/2025", time: "10:00 AM", price: "₹5633" },
+  { id: "trujet_14", from: "Surat", to: "Kolkata", date: "12/10/2025", time: "1:30 PM", price: "₹7736" },
+  { id: "trujet_15", from: "Bhopal", to: "Pune", date: "12/10/2025", time: "8:00 AM", price: "₹7594" },
+  { id: "airindia_16", from: "Chennai", to: "Coimbatore", date: "14/10/2025", time: "9:30 AM", price: "₹8048" },
+  { id: "airasiaindia_17", from: "Mumbai", to: "Delhi", date: "14/10/2025", time: "7:45 PM", price: "₹4279" },
+  { id: "vistara_18", from: "Nagpur", to: "Bangalore", date: "12/10/2025", time: "7:45 PM", price: "₹5638" },
+  { id: "indigo_19", from: "Chennai", to: "Bhopal", date: "14/10/2025", time: "6:00 PM", price: "₹7499" },
+  { id: "airasiaindia_20", from: "Delhi", to: "Lucknow", date: "12/10/2025", time: "8:00 AM", price: "₹3598" },
+  { id: "vistara_21", from: "Kochi", to: "Ahmedabad", date: "16/10/2025", time: "7:45 PM", price: "₹8096" },
+  { id: "akasaair_22", from: "Kolkata", to: "Guwahati", date: "17/10/2025", time: "11:30 AM", price: "₹5301" },
+  { id: "airindia_23", from: "Visakhapatnam", to: "Patna", date: "12/10/2025", time: "9:00 PM", price: "₹6296" },
+  { id: "starair_24", from: "Indore", to: "Coimbatore", date: "17/10/2025", time: "7:45 PM", price: "₹7990" },
+  { id: "akasaair_25", from: "Hyderabad", to: "Bangalore", date: "11/10/2025", time: "4:30 PM", price: "₹4816" },
+  { id: "spicejet_26", from: "Chennai", to: "Surat", date: "14/10/2025", time: "9:30 AM", price: "₹7054" },
+  { id: "trujet_27", from: "Jaipur", to: "Ahmedabad", date: "11/10/2025", time: "1:30 PM", price: "₹3205" },
+  { id: "spicejet_1", from: "Chennai", to: "Visakhapatnam", date: "14/10/2025", time: "8:00 AM", price: "₹3639" },
+  { id: "trujet_2", from: "Kolkata", to: "Ahmedabad", date: "17/10/2025", time: "1:30 PM", price: "₹6757" },
+  { id: "allianceair_3", from: "Nagpur", to: "Delhi", date: "20/10/2025", time: "9:00 PM", price: "₹7919" },
+  { id: "spicejet_4", from: "Visakhapatnam", to: "Chennai", date: "15/10/2025", time: "10:30 PM", price: "₹7541" },
+  { id: "goair_5", from: "Bhopal", to: "Bangalore", date: "15/10/2025", time: "7:45 PM", price: "₹5006" },
+  { id: "indigo_6", from: "Bangalore", to: "Chennai", date: "16/10/2025", time: "10:00 AM", price: "₹6790" },
+  { id: "vistara_7", from: "Visakhapatnam", to: "Guwahati", date: "17/10/2025", time: "10:00 AM", price: "₹3936" },
+  { id: "spicejet_8", from: "Hyderabad", to: "Chandigarh", date: "11/10/2025", time: "7:45 PM", price: "₹7672" },
+  { id: "airasiaindia_9", from: "Coimbatore", to: "Nagpur", date: "12/10/2025", time: "11:30 AM", price: "₹8057" },
+  { id: "trujet_10", from: "Chennai", to: "Patna", date: "20/10/2025", time: "10:30 PM", price: "₹7646" },
+  { id: "vistara_11", from: "Mumbai", to: "Nagpur", date: "13/10/2025", time: "8:00 AM", price: "₹8247" },
+  { id: "vistara_12", from: "Coimbatore", to: "Chandigarh", date: "16/10/2025", time: "6:00 PM", price: "₹3933" },
+  { id: "vistara_13", from: "Bangalore", to: "Guwahati", date: "18/10/2025", time: "10:00 AM", price: "₹5633" },
+  { id: "trujet_14", from: "Surat", to: "Kolkata", date: "09/10/2025", time: "1:30 PM", price: "₹7736" },
+  { id: "trujet_15", from: "Bhopal", to: "Pune", date: "06/10/2025", time: "8:00 AM", price: "₹7594" },
+  { id: "airindia_16", from: "Chennai", to: "Coimbatore", date: "14/10/2025", time: "9:30 AM", price: "₹8048" },
+  { id: "airasiaindia_17", from: "Mumbai", to: "Delhi", date: "14/10/2025", time: "7:45 PM", price: "₹4279" },
+  { id: "vistara_18", from: "Nagpur", to: "Bangalore", date: "12/10/2025", time: "7:45 PM", price: "₹5638" },
+  { id: "indigo_19", from: "Chennai", to: "Bhopal", date: "14/10/2025", time: "6:00 PM", price: "₹7499" },
+  { id: "airasiaindia_20", from: "Delhi", to: "Lucknow", date: "08/10/2025", time: "8:00 AM", price: "₹3598" },
+  { id: "vistara_21", from: "Kochi", to: "Ahmedabad", date: "16/10/2025", time: "7:45 PM", price: "₹8096" },
+  { id: "akasaair_22", from: "Kolkata", to: "Guwahati", date: "17/10/2025", time: "11:30 AM", price: "₹5301" },
+  { id: "airindia_23", from: "Visakhapatnam", to: "Patna", date: "13/10/2025", time: "9:00 PM", price: "₹6296" },
+  { id: "starair_24", from: "Indore", to: "Coimbatore", date: "17/10/2025", time: "7:45 PM", price: "₹7990" },
+  { id: "akasaair_25", from: "Hyderabad", to: "Bangalore", date: "11/10/2025", time: "4:30 PM", price: "₹4816" },
+  { id: "spicejet_26", from: "Chennai", to: "Surat", date: "14/10/2025", time: "9:30 AM", price: "₹7054" },
+  { id: "trujet_27", from: "Jaipur", to: "Ahmedabad", date: "11/10/2025", time: "1:30 PM", price: "₹3205" },
+  { id: "spicejet_28", from: "Bangalore", to: "Kolkata", date: "10/10/2025", time: "12:00 PM", price: "₹6378" },
+  { id: "airindia_29", from: "Chandigarh", to: "Kochi", date: "13/10/2025", time: "8:00 AM", price: "₹3331" },
+  { id: "airasiaindia_30", from: "Hyderabad", to: "Indore", date: "15/10/2025", time: "9:00 PM", price: "₹3827" },
+  { id: "airindia_31", from: "Patna", to: "Kochi", date: "19/10/2025", time: "10:00 AM", price: "₹5136" },
+  { id: "allianceair_32", from: "Chennai", to: "Jaipur", date: "18/10/2025", time: "6:00 AM", price: "₹4925" },
+  { id: "allianceair_33", from: "Bhopal", to: "Patna", date: "13/10/2025", time: "7:45 PM", price: "₹6375" },
+  { id: "trujet_34", from: "Lucknow", to: "Ahmedabad", date: "20/10/2025", time: "9:30 AM", price: "₹3233" },
+  { id: "allianceair_35", from: "Surat", to: "Jaipur", date: "12/10/2025", time: "10:30 PM", price: "₹7922" },
+  { id: "akasaair_36", from: "Coimbatore", to: "Indore", date: "16/10/2025", time: "1:30 PM", price: "₹7071" },
+  { id: "vistara_37", from: "Surat", to: "Delhi", date: "15/10/2025", time: "10:00 AM", price: "₹7813" },
+  { id: "allianceair_38", from: "Pune", to: "Chandigarh", date: "10/10/2025", time: "8:00 AM", price: "₹6055" },
+  { id: "goair_39", from: "Bangalore", to: "Mumbai", date: "10/10/2025", time: "12:00 PM", price: "₹6874" },
+  { id: "goair_40", from: "Delhi", to: "Hyderabad", date: "14/10/2025", time: "10:00 AM", price: "₹5963" },
+  { id: "vistara_41", from: "Mumbai", to: "Chandigarh", date: "11/10/2025", time: "7:45 PM", price: "₹5887" },
+  { id: "spicejet_42", from: "Visakhapatnam", to: "Hyderabad", date: "06/10/2025", time: "10:30 PM", price: "₹7928" },
+  { id: "allianceair_43", from: "Chandigarh", to: "Patna", date: "08/10/2025", time: "6:00 AM", price: "₹5942" },
+  { id: "goair_44", from: "Hyderabad", to: "Guwahati", date: "06/10/2025", time: "11:30 AM", price: "₹5763" },
+  { id: "vistara_45", from: "Delhi", to: "Nagpur", date: "19/10/2025", time: "6:00 PM", price: "₹5824" },
+  { id: "trujet_46", from: "Coimbatore", to: "Pune", date: "06/10/2025", time: "6:00 PM", price: "₹4742" },
+  { id: "allianceair_47", from: "Bhopal", to: "Mumbai", date: "19/10/2025", time: "12:00 PM", price: "₹6118" },
+  { id: "allianceair_48", from: "Kochi", to: "Chennai", date: "20/10/2025", time: "10:30 PM", price: "₹4178" },
+  { id: "trujet_49", from: "Patna", to: "Chandigarh", date: "13/10/2025", time: "6:00 PM", price: "₹4982" },
+  { id: "allianceair_50", from: "Delhi", to: "Jaipur", date: "18/10/2025", time: "12:00 PM", price: "₹7159" },
+  { id: "vistara_51", from: "Mumbai", to: "Ahmedabad", date: "19/10/2025", time: "1:30 PM", price: "₹4258" },
+  { id: "starair_52", from: "Visakhapatnam", to: "Jaipur", date: "17/10/2025", time: "3:00 PM", price: "₹4113" },
+  { id: "airasiaindia_53", from: "Surat", to: "Kochi", date: "16/10/2025", time: "4:30 PM", price: "₹6602" },
+  { id: "allianceair_54", from: "Indore", to: "Delhi", date: "08/10/2025", time: "12:00 PM", price: "₹4374" },
+  { id: "vistara_55", from: "Mumbai", to: "Guwahati", date: "06/10/2025", time: "11:30 AM", price: "₹4449" },
+  { id: "vistara_56", from: "Kochi", to: "Guwahati", date: "11/10/2025", time: "12:00 PM", price: "₹4315" },
+  { id: "vistara_57", from: "Lucknow", to: "Bangalore", date: "12/10/2025", time: "3:00 PM", price: "₹5947" },
+  { id: "goair_58", from: "Bangalore", to: "Jaipur", date: "19/10/2025", time: "5:00 PM", price: "₹5805" },
+  { id: "vistara_59", from: "Bangalore", to: "Delhi", date: "16/10/2025", time: "5:00 PM", price: "₹8442" },
+  { id: "allianceair_60", from: "Lucknow", to: "Indore", date: "16/10/2025", time: "1:30 PM", price: "₹6584" },
+  { id: "airasiaindia_61", from: "Chennai", to: "Nagpur", date: "15/10/2025", time: "10:30 PM", price: "₹3756" },
+  { id: "trujet_62", from: "Guwahati", to: "Nagpur", date: "17/10/2025", time: "1:30 PM", price: "₹7060" },
+  { id: "airasiaindia_63", from: "Bhopal", to: "Jaipur", date: "12/10/2025", time: "5:00 PM", price: "₹3787" },
+  { id: "indigo_64", from: "Jaipur", to: "Visakhapatnam", date: "13/10/2025", time: "11:30 AM", price: "₹6645" },
+  { id: "starair_65", from: "Ahmedabad", to: "Patna", date: "19/10/2025", time: "10:00 AM", price: "₹6664" },
+  { id: "vistara_66", from: "Surat", to: "Chandigarh", date: "11/10/2025", time: "6:00 PM", price: "₹3802" },
+  { id: "indigo_67", from: "Lucknow", to: "Pune", date: "20/10/2025", time: "11:30 AM", price: "₹6350" },
+  { id: "airasiaindia_68", from: "Pune", to: "Indore", date: "14/10/2025", time: "1:30 PM", price: "₹6849" },
+  { id: "goair_69", from: "Lucknow", to: "Visakhapatnam", date: "19/10/2025", time: "6:00 AM", price: "₹7692" },
+  { id: "vistara_70", from: "Lucknow", to: "Guwahati", date: "16/10/2025", time: "1:30 PM", price: "₹8260" },
+  { id: "airasiaindia_71", from: "Hyderabad", to: "Coimbatore", date: "08/10/2025", time: "5:00 PM", price: "₹4054" },
+  { id: "vistara_72", from: "Pune", to: "Patna", date: "17/10/2025", time: "8:00 AM", price: "₹4319" },
+  { id: "trujet_73", from: "Kolkata", to: "Lucknow", date: "16/10/2025", time: "9:30 AM", price: "₹4226" },
+  { id: "goair_74", from: "Coimbatore", to: "Patna", date: "20/10/2025", time: "12:00 PM", price: "₹6492" },
+  { id: "indigo_75", from: "Mumbai", to: "Indore", date: "19/10/2025", time: "11:30 AM", price: "₹6593" },
+  { id: "goair_76", from: "Kochi", to: "Lucknow", date: "19/10/2025", time: "9:30 AM", price: "₹3232" },
+  { id: "vistara_77", from: "Chandigarh", to: "Lucknow", date: "12/10/2025", time: "12:00 PM", price: "₹5195" },
+  { id: "akasaair_78", from: "Ahmedabad", to: "Bhopal", date: "10/10/2025", time: "8:00 AM", price: "₹8139" },
+  { id: "vistara_79", from: "Chandigarh", to: "Kolkata", date: "12/10/2025", time: "9:00 PM", price: "₹4796" },
+  { id: "akasaair_80", from: "Visakhapatnam", to: "Nagpur", date: "22/10/2025", time: "9:00 PM", price: "₹7621" },
+  { id: "akasaair_81", from: "Kochi", to: "Coimbatore", date: "22/10/2025", time: "11:30 AM", price: "₹6120" },
+  { id: "spicejet_82", from: "Nagpur", to: "Lucknow", date: "16/10/2025", time: "5:00 PM", price: "₹7692" },
+  { id: "vistara_83", from: "Delhi", to: "Chennai", date: "13/10/2025", time: "9:00 PM", price: "₹4285" },
+  { id: "goair_84", from: "Pune", to: "Mumbai", date: "21/10/2025", time: "12:00 PM", price: "₹8123" },
+  { id: "indigo_85", from: "Nagpur", to: "Kolkata", date: "13/10/2025", time: "6:00 AM", price: "₹5676" },
+  { id: "vistara_86", from: "Delhi", to: "Pune", date: "19/10/2025", time: "8:00 AM", price: "₹7678" },
+  { id: "trujet_87", from: "Bangalore", to: "Chandigarh", date: "11/10/2025", time: "6:00 AM", price: "₹4265" },
+  { id: "trujet_88", from: "Bhopal", to: "Hyderabad", date: "19/10/2025", time: "4:30 PM", price: "₹6610" },
+  { id: "allianceair_89", from: "Indore", to: "Pune", date: "28/10/2025", time: "8:00 AM", price: "₹5123" },
+  { id: "indigo_90", from: "Indore", to: "Ahmedabad", date: "15/10/2025", time: "11:30 AM", price: "₹4615" },
+  { id: "goair_91", from: "Delhi", to: "Visakhapatnam", date: "16/10/2025", time: "10:30 PM", price: "₹5957" },
+  { id: "starair_92", from: "Chennai", to: "Bangalore", date: "16/10/2025", time: "9:30 AM", price: "₹8325" },
+  { id: "starair_93", from: "Lucknow", to: "Patna", date: "14/10/2025", time: "4:30 PM", price: "₹5089" },
+  { id: "airasiaindia_94", from: "Patna", to: "Mumbai", date: "11/10/2025", time: "7:45 PM", price: "₹4263" },
+  { id: "indigo_95", from: "Hyderabad", to: "Jaipur", date: "20/10/2025", time: "8:00 AM", price: "₹7411" },
+  { id: "vistara_96", from: "Hyderabad", to: "Delhi", date: "10/10/2025", time: "1:30 PM", price: "₹5566" },
+  { id: "airindia_97", from: "Chandigarh", to: "Hyderabad", date: "16/10/2025", time: "4:30 PM", price: "₹3256" },
+  { id: "vistara_98", from: "Indore", to: "Kochi", date: "23/10/2025", time: "6:00 PM", price: "₹3760" },
+  { id: "vistara_99", from: "Coimbatore", to: "Jaipur", date: "16/10/2025", time: "9:00 PM", price: "₹8222" },
+  { id: "akasaair_100", from: "Chennai", to: "Pune", date: "15/10/2025", time: "9:00 PM", price: "₹4512" },
+  { id: "goair_1", from: "Bangalore", to: "Chennai", date: "19/10/2025", time: "6:00 AM", price: "₹3726" },
+  { id: "spicejet_2", from: "Bangalore", to: "Chennai", date: "20/10/2025", time: "5:00 PM", price: "₹7371" },
+  { id: "starair_3", from: "Bangalore", to: "Chennai", date: "21/10/2025", time: "6:00 PM", price: "₹3283" },
+  { id: "akasaair_4", from: "Bangalore", to: "Chennai", date: "22/10/2025", time: "9:30 AM", price: "₹5596" },
+  { id: "allianceair_5", from: "Bangalore", to: "Chennai", date: "23/10/2025", time: "10:00 AM", price: "₹7592" },
+  { id: "akasaair_6", from: "Bangalore", to: "Chennai", date: "24/10/2025", time: "9:00 PM", price: "₹6390" },
+  { id: "goair_7", from: "Bangalore", to: "Chennai", date: "25/10/2025", time: "10:30 PM", price: "₹4164" },
+  { id: "airindia_8", from: "Bangalore", to: "Chennai", date: "26/10/2025", time: "12:00 PM", price: "₹5287" },
+  { id: "airindia_9", from: "Bangalore", to: "Chennai", date: "27/10/2025", time: "4:30 PM", price: "₹4670" },
+  { id: "airasiaindia_10", from: "Bangalore", to: "Chennai", date: "28/10/2025", time: "10:30 PM", price: "₹3590" },
+  { id: "goair_11", from: "Chennai", to: "Bangalore", date: "29/10/2025", time: "7:45 PM", price: "₹5725" },
+  { id: "spicejet_12", from: "Chennai", to: "Bangalore", date: "30/10/2025", time: "11:30 AM", price: "₹5705" },
+  { id: "goair_13", from: "Chennai", to: "Bangalore", date: "10/10/2025", time: "6:00 PM", price: "₹4624" },
+  { id: "airindia_14", from: "Chennai", to: "Bangalore", date: "11/10/2025", time: "10:30 PM", price: "₹4342" },
+  { id: "allianceair_15", from: "Chennai", to: "Bangalore", date: "12/10/2025", time: "6:00 PM", price: "₹5421" },
+  { id: "airasiaindia_16", from: "Chennai", to: "Bangalore", date: "13/10/2025", time: "8:00 AM", price: "₹6339" },
+  { id: "trujet_17", from: "Chennai", to: "Bangalore", date: "14/10/2025", time: "9:30 AM", price: "₹7771" },
+  { id: "indigo_18", from: "Chennai", to: "Bangalore", date: "15/10/2025", time: "9:00 PM", price: "₹3261" },
+  { id: "airasiaindia_19", from: "Chennai", to: "Bangalore", date: "16/10/2025", time: "10:30 PM", price: "₹4088" },
+  { id: "goair_20", from: "Chennai", to: "Bangalore", date: "17/10/2025", time: "9:00 PM", price: "₹4474" },
+  { id: "akasaair_21", from: "Bangalore", to: "Delhi", date: "18/10/2025", time: "11:30 AM", price: "₹7830" },
+  { id: "vistara_22", from: "Bangalore", to: "Delhi", date: "19/10/2025", time: "6:00 AM", price: "₹4989" },
+  { id: "spicejet_23", from: "Bangalore", to: "Delhi", date: "20/10/2025", time: "11:30 AM", price: "₹5204" },
+  { id: "starair_24", from: "Bangalore", to: "Delhi", date: "21/10/2025", time: "5:00 PM", price: "₹4009" },
+  { id: "goair_25", from: "Bangalore", to: "Delhi", date: "22/10/2025", time: "3:00 PM", price: "₹3928" },
+  { id: "spicejet_26", from: "Bangalore", to: "Delhi", date: "23/10/2025", time: "4:30 PM", price: "₹6330" },
+  { id: "starair_27", from: "Bangalore", to: "Delhi", date: "24/10/2025", time: "7:45 PM", price: "₹8422" },
+  { id: "airindia_28", from: "Bangalore", to: "Delhi", date: "25/10/2025", time: "3:00 PM", price: "₹7363" },
+  { id: "spicejet_29", from: "Bangalore", to: "Delhi", date: "26/10/2025", time: "6:00 PM", price: "₹3325" },
+  { id: "akasaair_30", from: "Bangalore", to: "Delhi", date: "27/10/2025", time: "4:30 PM", price: "₹3811" },
+  { id: "trujet_31", from: "Delhi", to: "Bangalore", date: "28/10/2025", time: "3:00 PM", price: "₹7469" },
+  { id: "allianceair_32", from: "Delhi", to: "Bangalore", date: "29/10/2025", time: "12:00 PM", price: "₹8001" },
+  { id: "airindia_33", from: "Delhi", to: "Bangalore", date: "07/11/2025", time: "12:00 PM", price: "₹7883" },
+  { id: "goair_34", from: "Delhi", to: "Bangalore", date: "07/11/2025", time: "6:00 PM", price: "₹3934" },
+  { id: "trujet_35", from: "Delhi", to: "Bangalore", date: "07/11/2025", time: "3:00 PM", price: "₹4599" },
+  { id: "goair_36", from: "Delhi", to: "Bangalore", date: "07/11/2025", time: "12:00 PM", price: "₹4134" },
+  { id: "airasiaindia_37", from: "Delhi", to: "Bangalore", date: "07/11/2025", time: "4:30 PM", price: "₹3498" },
+  { id: "airindia_38", from: "Delhi", to: "Bangalore", date: "07/11/2025", time: "3:00 PM", price: "₹5112" },
+  { id: "spicejet_39", from: "Delhi", to: "Bangalore", date: "07/11/2025", time: "1:30 PM", price: "₹6821" },
+  { id: "airindia_40", from: "Delhi", to: "Bangalore", date: "07/11/2025", time: "10:00 AM", price: "₹8480" }
+    ];
+
+    // Get selected flight
+    const selectedId = localStorage.getItem("selectedFlight");
+    const selectedFlight = flights.find(f => f.id === selectedId);
+
+    if (selectedFlight) {
+      document.getElementById("flight-info").innerHTML =
+        `<p><strong>Selected Flight:</strong> ${selectedFlight.from} → ${selectedFlight.to} | ${selectedFlight.date}| ${selectedFlight.time} | ${selectedFlight.price}</p>`;
+    }
+
+    // Booking form submit
+    document.getElementById("booking-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    document.getElementById("status").innerText = "✅ Booking Confirmed! A confirmation email has been sent.";
+
+    // Add this to hide after 5 seconds
+    setTimeout(function() {
+         document.getElementById("flight-info").style.display = 'none';
+        document.getElementById("status").innerText = "";
+        document.getElementById("booking-form").reset();
+    }, 5000);
+});
+  </script>
+  <script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="7RwUFj4IMskUQOrbCNeSP";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+</body>
+</html>
