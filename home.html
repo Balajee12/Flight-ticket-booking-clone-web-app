@@ -2,7 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>AVIGO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AVIGO - AI-Powered Travel Booking Platform</title>
+  
+  <meta name="title" content="AVIGO | AI-Powered Travel Booking for Flights, Trains & Buses">
+  <meta name="description" content="AVIGO - Your trusted AI-powered travel booking platform for flights, trains, and buses across India. Book tickets instantly with best prices and 24/7 support.">
+  <meta name="keywords" content="AVIGO, Flight Booking, Train Booking, Bus Booking, Travel India, AI Travel, Online Ticket Booking, Cheap Flights, Train Tickets">
+  <meta name="author" content="AVIGO">
+  <meta name="robots" content="index, follow">
+  
+  <meta property="og:title" content="AVIGO | AI-Powered Travel Booking Platform">
+  <meta property="og:description" content="Book flights, trains, and buses across India with AVIGO's AI-powered platform. Best prices guaranteed.">
+  <meta property="og:image" content="assets/icon.png">
+  <meta property="og:url" content="https://avigo.com/">
+  <meta property="og:type" content="website">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AVIGO | AI-Powered Travel Booking Platform">
+  <meta name="twitter:description" content="Book flights, trains, and buses across India with AVIGO's AI-powered platform.">
+  <meta name="twitter:image" content="assets/icon.png">
+  
+  <link rel="icon" type="image/png" href="assets/icon.png">
   <link rel="stylesheet" href="home.css">
   <script>
     // Check if the intro has been played in this session
@@ -26,6 +46,127 @@
              </ul>
               </nav>
    
+  <!-- Travel Options Section -->
+  <section class="travel-options flights-active" id="travelOptions">
+    <div class="option-card active" data-tab="flights">
+      <svg class="travel-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50 28L32 18L14 28V32L32 28L50 32V28Z" fill="#4A90E2"/>
+        <path d="M32 18V38M20 42H44M24 46H40" stroke="#2C5AA0" stroke-width="2" stroke-linecap="round"/>
+        <ellipse cx="32" cy="42" rx="14" ry="4" fill="#6BB6FF"/>
+      </svg>
+      <h3>Flights</h3>
+    </div>
+    
+    <div class="option-card" data-tab="trains" onclick="window.location.href='trains.html'">
+      <svg class="travel-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="12" y="24" width="40" height="20" rx="2" fill="#3B5998"/>
+        <rect x="16" y="28" width="12" height="12" fill="#5A7BC1"/>
+        <rect x="32" y="28" width="12" height="12" fill="#5A7BC1"/>
+        <circle cx="20" cy="46" r="3" fill="#2C3E50"/>
+        <circle cx="44" cy="46" r="3" fill="#2C3E50"/>
+        <path d="M8 32H12M52 32H56" stroke="#2C5AA0" stroke-width="2"/>
+      </svg>
+      <h3>Trains</h3>
+    </div>
+    
+    <div class="option-card" data-tab="buses" onclick="window.location.href='buses.html'">
+      <svg class="travel-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="14" y="18" width="36" height="26" rx="3" fill="#34495E"/>
+        <rect x="18" y="22" width="14" height="10" fill="#5DADE2"/>
+        <rect x="34" y="22" width="12" height="10" fill="#5DADE2"/>
+        <circle cx="22" cy="46" r="3" fill="#2C3E50"/>
+        <circle cx="42" cy="46" r="3" fill="#2C3E50"/>
+        <path d="M14 18L18 12H46L50 18" fill="#2C3E50"/>
+      </svg>
+      <h3>Buses</h3>
+    </div>
+  </section>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1>Welcome to AVIGO</h1>
+      <p class="hero-subtitle">Your One-Stop Travel Solution for Flights, Trains & Buses</p>
+      <div class="ai-tagline" onclick="window.open('https://elevenlabs.io/app/talk-to?agent_id=agent_7601k9jhfw3pe128gegf6d9k5c87', '_blank')">
+        <span class="ai-icon">🤖</span>
+        <p>AI-Friendly Booking System - Helping You Reach Your Destination in the Most Efficient Manner</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="feature-card">
+      <h3>✈️ 1000+ Flights</h3>
+      <p>Book from top airlines across India</p>
+    </div>
+    <div class="feature-card">
+      <h3>🚆 500+ Trains</h3>
+      <p>Connect to every corner of the country</p>
+    </div>
+    <div class="feature-card">
+      <h3>🚌 800+ Buses</h3>
+      <p>Comfortable journeys at best prices</p>
+    </div>
+  </section>
+
+  <!-- Why Choose AVIGO Scrolling Section -->
+  <section class="why-choose-section">
+    <h2>Why Choose AVIGO?</h2>
+    <div class="scroll-container">
+      <div class="scroll-content">
+        <div class="why-card">
+          <div class="icon">✈️</div>
+          <h3>Best Price Guarantee</h3>
+          <p>Get the lowest fares on flights, trains & buses</p>
+        </div>
+        <div class="why-card">
+          <div class="icon">⚡</div>
+          <h3>Instant Booking</h3>
+          <p>Quick & easy booking in just 3 steps</p>
+        </div>
+        <div class="why-card">
+          <div class="icon">🔒</div>
+          <h3>Secure Payments</h3>
+          <p>100% safe & encrypted transactions</p>
+        </div>
+        <div class="why-card">
+          <div class="icon">🎁</div>
+          <h3>Exclusive Offers</h3>
+          <p>Save up to 40% with special deals</p>
+        </div>
+        <div class="why-card">
+          <div class="icon">📞</div>
+          <h3>24/7 Support</h3>
+          <p>Round the clock customer assistance</p>
+        </div>
+        <div class="why-card">
+          <div class="icon">💳</div>
+          <h3>Easy Cancellation</h3>
+          <p>Hassle-free refund process</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Destinations -->
+  <section class="destinations-section">
+    <h2>Cheapest Fares From <select class="city-select" id="citySelector" onchange="updateDestinations()">
+      <option value="Delhi">New Delhi</option>
+      <option value="Mumbai">Mumbai</option>
+      <option value="Bangalore">Bangalore</option>
+      <option value="Chennai">Chennai</option>
+      <option value="Kolkata">Kolkata</option>
+      <option value="Hyderabad">Hyderabad</option>
+      <option value="Pune">Pune</option>
+      <option value="Ahmedabad">Ahmedabad</option>
+      <option value="Jaipur">Jaipur</option>
+      <option value="Lucknow">Lucknow</option>
+    </select></h2>
+    <div class="destinations-scroll" id="flightDestinations"></div>
+  </section>
+
+
 
   <!-- Search Flights -->
   <section class="search-box">
@@ -41,9 +182,77 @@
     <h2>Available Flights</h2>
     <ul id="flight-list"></ul>
   </section>
+  <footer class="footer">
+    <p>&copy; 2025 AVIGO. All Rights Reserved.</p>
+  </footer>
 </div>
 </div>
   <script src="home.js"></script>
+  <script>
+    // Duplicate scroll content for infinite effect
+    const scrollContent = document.querySelector('.scroll-content');
+    const cards = scrollContent.innerHTML;
+    scrollContent.innerHTML += cards;
+
+    // Destination data
+    const cityImages = {
+      Goa: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400',
+      Mumbai: 'https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=400',
+      Delhi: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?w=400',
+      Bangalore: 'https://images.unsplash.com/photo-1596176530529-78163a4f7af2?w=400',
+      Chennai: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=400',
+      Kolkata: 'https://images.unsplash.com/photo-1558431382-27e303142255?w=400',
+      Hyderabad: 'https://images.unsplash.com/photo-1609920658906-8223bd289001?w=400',
+      Pune: 'https://images.unsplash.com/photo-1595658658481-d53d3f999875?w=400',
+      Jaipur: 'https://images.unsplash.com/photo-1599661046289-e31897846e41?w=400',
+      Ahmedabad: 'https://images.unsplash.com/photo-1621950519808-4b6f8f5e0e8e?w=400',
+      Lucknow: 'https://images.unsplash.com/photo-1605649487212-47bdab064df7?w=400',
+      Patna: 'https://images.unsplash.com/photo-1605649487212-47bdab064df7?w=400',
+      Udaipur: 'https://images.unsplash.com/photo-1599661046289-e31897846e41?w=400'
+    };
+
+    const destinations = {
+      Delhi: [{city: 'Goa', state: 'India', price: 1634}, {city: 'Mumbai', state: 'Maharashtra', price: 1799}, {city: 'Bangalore', state: 'Karnataka', price: 2249}, {city: 'Jaipur', state: 'Rajasthan', price: 1680}, {city: 'Chennai', state: 'Tamil Nadu', price: 2450}, {city: 'Kolkata', state: 'West Bengal', price: 2150}],
+      Mumbai: [{city: 'Goa', state: 'India', price: 1299}, {city: 'Delhi', state: 'NCR', price: 1799}, {city: 'Bangalore', state: 'Karnataka', price: 1950}, {city: 'Jaipur', state: 'Rajasthan', price: 2100}, {city: 'Chennai', state: 'Tamil Nadu', price: 2350}, {city: 'Pune', state: 'Maharashtra', price: 899}],
+      Bangalore: [{city: 'Goa', state: 'India', price: 1450}, {city: 'Mumbai', state: 'Maharashtra', price: 1950}, {city: 'Delhi', state: 'NCR', price: 2249}, {city: 'Chennai', state: 'Tamil Nadu', price: 1599}, {city: 'Hyderabad', state: 'Telangana', price: 1299}, {city: 'Kolkata', state: 'West Bengal', price: 2650}],
+      Chennai: [{city: 'Bangalore', state: 'Karnataka', price: 1599}, {city: 'Mumbai', state: 'Maharashtra', price: 2350}, {city: 'Delhi', state: 'NCR', price: 2450}, {city: 'Goa', state: 'India', price: 1899}, {city: 'Hyderabad', state: 'Telangana', price: 1450}, {city: 'Kolkata', state: 'West Bengal', price: 2550}],
+      Kolkata: [{city: 'Delhi', state: 'NCR', price: 2150}, {city: 'Mumbai', state: 'Maharashtra', price: 2550}, {city: 'Bangalore', state: 'Karnataka', price: 2650}, {city: 'Goa', state: 'India', price: 2399}, {city: 'Chennai', state: 'Tamil Nadu', price: 2550}, {city: 'Patna', state: 'Bihar', price: 1299}],
+      Hyderabad: [{city: 'Bangalore', state: 'Karnataka', price: 1299}, {city: 'Mumbai', state: 'Maharashtra', price: 1850}, {city: 'Delhi', state: 'NCR', price: 2150}, {city: 'Goa', state: 'India', price: 1650}, {city: 'Chennai', state: 'Tamil Nadu', price: 1450}, {city: 'Kolkata', state: 'West Bengal', price: 2450}],
+      Pune: [{city: 'Mumbai', state: 'Maharashtra', price: 899}, {city: 'Goa', state: 'India', price: 1199}, {city: 'Delhi', state: 'NCR', price: 2050}, {city: 'Bangalore', state: 'Karnataka', price: 1850}, {city: 'Jaipur', state: 'Rajasthan', price: 2250}, {city: 'Hyderabad', state: 'Telangana', price: 1550}],
+      Ahmedabad: [{city: 'Mumbai', state: 'Maharashtra', price: 1450}, {city: 'Delhi', state: 'NCR', price: 1850}, {city: 'Goa', state: 'India', price: 1750}, {city: 'Bangalore', state: 'Karnataka', price: 2150}, {city: 'Jaipur', state: 'Rajasthan', price: 1550}, {city: 'Pune', state: 'Maharashtra', price: 1650}],
+      Jaipur: [{city: 'Delhi', state: 'NCR', price: 1680}, {city: 'Mumbai', state: 'Maharashtra', price: 2100}, {city: 'Goa', state: 'India', price: 2250}, {city: 'Bangalore', state: 'Karnataka', price: 2450}, {city: 'Ahmedabad', state: 'Gujarat', price: 1550}, {city: 'Udaipur', state: 'Rajasthan', price: 1299}],
+      Lucknow: [{city: 'Delhi', state: 'NCR', price: 1450}, {city: 'Mumbai', state: 'Maharashtra', price: 2250}, {city: 'Bangalore', state: 'Karnataka', price: 2550}, {city: 'Kolkata', state: 'West Bengal', price: 1850}, {city: 'Goa', state: 'India', price: 2450}, {city: 'Patna', state: 'Bihar', price: 1199}]
+    };
+
+    function updateDestinations() {
+      const city = document.getElementById('citySelector').value;
+      const container = document.getElementById('flightDestinations');
+      container.innerHTML = '';
+      destinations[city].forEach((dest, index) => {
+        const flightId = `quickbook_${city}_${dest.city}_${index}`;
+        container.innerHTML += `
+          <div class="destination-card">
+            <img src="${cityImages[dest.city]}" alt="${dest.city}">
+            <div class="dest-details">
+              <h3>${dest.city}, <span>${dest.state}</span></h3>
+              <p class="date">Fri, 21 Nov</p>
+              <p class="price">₹${dest.price} <span>onwards</span></p>
+            </div>
+            <button class="book-btn" onclick="quickBookFlight('${flightId}', '${city}', '${dest.city}', '21/11/2025', '10:00 AM', '${dest.price}')">Book Flight</button>
+          </div>
+        `;
+      });
+    }
+
+    function quickBookFlight(id, from, to, date, time, price) {
+      const flightData = {id: id, from: from, to: to, date: date, time: time, price: price};
+      localStorage.setItem('selectedFlight', JSON.stringify(flightData));
+      window.location.href = 'flight-booking.html';
+    }
+
+    // Initialize on page load
+    updateDestinations();
+  </script>
   <script>
 (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="7RwUFj4IMskUQOrbCNeSP";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
 </script>

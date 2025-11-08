@@ -2,7 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>AVIGO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Bookings - AVIGO</title>
+  
+  <meta name="title" content="My Bookings | AVIGO - View Your Travel History">
+  <meta name="description" content="View and manage your flight, train, and bus bookings with AVIGO. Access your travel history and booking details.">
+  <meta name="keywords" content="My Bookings, Travel History, AVIGO Bookings, Flight Tickets, Train Tickets, Bus Tickets">
+  <meta name="author" content="AVIGO">
+  <meta name="robots" content="noindex, nofollow">
+  
+  <meta property="og:title" content="My Bookings | AVIGO">
+  <meta property="og:description" content="View and manage your travel bookings with AVIGO.">
+  <meta property="og:image" content="assets/icon.png">
+  <meta property="og:type" content="website">
+  
+  <link rel="icon" type="image/png" href="assets/icon.png">
  <script>
     // Check if the intro has been played in this session
     if (!sessionStorage.getItem('introPlayed')) {
@@ -141,6 +155,97 @@ button {
 button:hover {
   background: #005bb5;
 }
+
+.booking-history {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+.booking-column {
+  background: linear-gradient(135deg, rgba(255, 0, 149, 0.368), rgba(236, 185, 4, 0.467));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.123);
+  border: 1px solid rgba(145, 144, 144, 0.612);
+}
+
+.booking-column h3 {
+  color: #fff;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.booking-item {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.booking-item p {
+  margin: 5px 0;
+  color: #333;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .booking-history {
+    grid-template-columns: 1fr;
+  }
+}
+
+.services-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.service-box {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  border: 2px solid rgba(255, 0, 149, 0.3);
+}
+
+.service-box h3 {
+  color: #ff0095;
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.service-box ul {
+  list-style: none;
+  padding: 0;
+}
+
+.service-box ul li {
+  color: #333;
+  padding: 10px 0;
+  font-size: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.service-box ul li:last-child {
+  border-bottom: none;
+}
+
+@media (max-width: 768px) {
+  .services-info {
+    grid-template-columns: 1fr;
+  }
+}
   </style>
     <!-- Navbar -->
      <div class="container">
@@ -156,22 +261,53 @@ button:hover {
      </div>
 
   <section class="search-box">
-    <h2>Passenger Details</h2>
-     <div id="passenger-details">
-    </div>
-    <div id="flight-info"></div>
-    <form id="booking-form">
-      <input type="text" placeholder="Full Name" required>
-      <input type="email" placeholder="Email" required>
-      <input type="number" placeholder="Phone Number" required>
-      <input type="number" placeholder="Number of Passengers" min="1" required>
-      <button onclick="cofirmbooking(event)" type="submit">Confirm Booking</button>
-    </form>
+    <h2>My Bookings</h2>
   </section>
 
-  <section class="results">
-    <h2>Booking Status</h2>
-    <p id="status"></p>
+  <!-- Services Info -->
+  <section class="services-info">
+    <div class="service-box">
+      <h3>✨ Why Choose AVIGO?</h3>
+      <ul>
+        <li>✅ Instant Booking Confirmation</li>
+        <li>✅ 24/7 Customer Support</li>
+        <li>✅ Best Price Guarantee</li>
+        <li>✅ Secure Payment Gateway</li>
+      </ul>
+    </div>
+    <div class="service-box">
+      <h3>🎁 Special Offers</h3>
+      <ul>
+        <li>💰 Flat 20% OFF on First Booking</li>
+        <li>🎫 Early Bird Discounts</li>
+        <li>👥 Group Booking Benefits</li>
+        <li>🎉 Seasonal Cashback Offers</li>
+      </ul>
+    </div>
+    <div class="service-box">
+      <h3>🛡️ Safe & Secure</h3>
+      <ul>
+        <li>🔒 SSL Encrypted Transactions</li>
+        <li>💳 Multiple Payment Options</li>
+        <li>📧 Email & SMS Notifications</li>
+        <li>📝 Easy Cancellation Policy</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="booking-history">
+    <div class="booking-column">
+      <h3>Flight Bookings</h3>
+      <div id="flight-bookings"></div>
+    </div>
+    <div class="booking-column">
+      <h3>Train Bookings</h3>
+      <div id="train-bookings"></div>
+    </div>
+    <div class="booking-column">
+      <h3>Bus Bookings</h3>
+      <div id="bus-bookings"></div>
+    </div>
   </section>
  
   <script>
@@ -371,28 +507,62 @@ button:hover {
   { id: "airindia_40", from: "Delhi", to: "Bangalore", date: "07/11/2025", time: "10:00 AM", price: "₹8480" }
     ];
 
-    // Get selected flight
-    const selectedId = localStorage.getItem("selectedFlight");
-    const selectedFlight = flights.find(f => f.id === selectedId);
+    // Load booking history
+    const flightBookings = JSON.parse(localStorage.getItem("flightBookings")) || [];
+    const trainBookings = JSON.parse(localStorage.getItem("trainBookings")) || [];
+    const busBookings = JSON.parse(localStorage.getItem("busBookings")) || [];
 
-    if (selectedFlight) {
-      document.getElementById("flight-info").innerHTML =
-        `<p><strong>Selected Flight:</strong> ${selectedFlight.from} → ${selectedFlight.to} | ${selectedFlight.date}| ${selectedFlight.time} | ${selectedFlight.price}</p>`;
+    const flightDiv = document.getElementById("flight-bookings");
+    const trainDiv = document.getElementById("train-bookings");
+    const busDiv = document.getElementById("bus-bookings");
+
+    if (flightBookings.length === 0) {
+      flightDiv.innerHTML = '<p style="color: #fff; text-align: center;">No flight bookings yet</p>';
+    } else {
+      flightBookings.forEach(booking => {
+        flightDiv.innerHTML += `
+          <div class="booking-item">
+            <p><strong>Flight:</strong> ${booking.id}</p>
+            <p><strong>Route:</strong> ${booking.from} → ${booking.to}</p>
+            <p><strong>Date:</strong> ${booking.date}</p>
+            <p><strong>Time:</strong> ${booking.time}</p>
+            <p><strong>Price:</strong> ${booking.price}</p>
+          </div>
+        `;
+      });
     }
 
-    // Booking form submit
-    document.getElementById("booking-form").addEventListener("submit", function(event) {
-    event.preventDefault();
+    if (trainBookings.length === 0) {
+      trainDiv.innerHTML = '<p style="color: #fff; text-align: center;">No train bookings yet</p>';
+    } else {
+      trainBookings.forEach(booking => {
+        trainDiv.innerHTML += `
+          <div class="booking-item">
+            <p><strong>Train:</strong> ${booking.id}</p>
+            <p><strong>Route:</strong> ${booking.from} → ${booking.to}</p>
+            <p><strong>Date:</strong> ${booking.date}</p>
+            <p><strong>Time:</strong> ${booking.time}</p>
+            <p><strong>Price:</strong> ${booking.price}</p>
+          </div>
+        `;
+      });
+    }
 
-    document.getElementById("status").innerText = "✅ Booking Confirmed! A confirmation email has been sent.";
-
-    // Add this to hide after 5 seconds
-    setTimeout(function() {
-         document.getElementById("flight-info").style.display = 'none';
-        document.getElementById("status").innerText = "";
-        document.getElementById("booking-form").reset();
-    }, 5000);
-});
+    if (busBookings.length === 0) {
+      busDiv.innerHTML = '<p style="color: #fff; text-align: center;">No bus bookings yet</p>';
+    } else {
+      busBookings.forEach(booking => {
+        busDiv.innerHTML += `
+          <div class="booking-item">
+            <p><strong>Bus:</strong> ${booking.id}</p>
+            <p><strong>Route:</strong> ${booking.from} → ${booking.to}</p>
+            <p><strong>Date:</strong> ${booking.date}</p>
+            <p><strong>Time:</strong> ${booking.time}</p>
+            <p><strong>Price:</strong> ${booking.price}</p>
+          </div>
+        `;
+      });
+    }
   </script>
   <script>
 (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="7RwUFj4IMskUQOrbCNeSP";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();

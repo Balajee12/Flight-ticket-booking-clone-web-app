@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AVIGO - Train Booking</title>
+  <link rel="stylesheet" href="home.css">
+</head>
+<body>
+  <div class="background">
+   <div class="container">
+        <nav>
+            <img src="assets/logo.png" class="logo">
+            <ul id="sidemenu">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="booking.html">My Bookings</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="contact.html">contact</a></li>
+             </ul>
+        </nav>
+
+  <section class="search-box booking-form">
+    <h2>Passenger Details</h2>
+    <div id="train-info"></div>
+    <input id="name" type="text" placeholder="Full Name">
+    <input id="age" type="number" placeholder="Age">
+    <input id="email" type="email" placeholder="Email">
+    <input id="phone" type="tel" placeholder="Phone Number">
+    <button type="button" onclick="confirmTrainBooking()">Confirm Booking</button>
+  </section>
+</div>
+</div>
+  <script>
+    const selectedTrainData = JSON.parse(localStorage.getItem("selectedTrain"));
+
+    if (selectedTrainData) {
+      document.getElementById("train-info").innerHTML =
+        `<p><strong>Selected Train:</strong> ${selectedTrainData.from} → ${selectedTrainData.to} | ${selectedTrainData.date} | ${selectedTrainData.time} | ₹${selectedTrainData.price}</p>`;
+    }
+    
+    function confirmTrainBooking() {
+      const name = document.getElementById("name").value;
+      const age = document.getElementById("age").value;
+      const email = document.getElementById("email").value;
+      const phone = document.getElementById("phone").value;
+      
+      if (!name || !age || !email || !phone) {
+        alert("Please fill all fields!");
+        return;
+      }
+      
+      const trainBookings = JSON.parse(localStorage.getItem("trainBookings")) || [];
+      trainBookings.push(selectedTrainData);
+      localStorage.setItem("trainBookings", JSON.stringify(trainBookings));
+      
+      alert("Train booking confirmed for " + name);
+      window.location.href = "booking.html";
+    }
+  </script>
+</body>
+</html>

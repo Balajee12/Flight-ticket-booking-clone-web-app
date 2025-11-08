@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Train Booking - AVIGO</title>
+  
+  <meta name="title" content="Train Booking | AVIGO - Book Train Tickets Online">
+  <meta name="description" content="Book train tickets online with AVIGO. Compare prices, check availability, and get instant confirmation for trains across India.">
+  <meta name="keywords" content="Train Booking, Railway Tickets, IRCTC, Train Tickets India, Online Train Booking, AVIGO">
+  <meta name="author" content="AVIGO">
+  <meta name="robots" content="index, follow">
+  
+  <meta property="og:title" content="Train Booking | AVIGO">
+  <meta property="og:description" content="Book train tickets online with AVIGO. Best prices and instant confirmation.">
+  <meta property="og:image" content="assets/icon.png">
+  <meta property="og:type" content="website">
+  
+  <link rel="icon" type="image/png" href="assets/icon.png">
+  <link rel="stylesheet" href="home.css">
+</head>
+<body>
+  <div class="background">
+   <div class="container">
+        <nav>
+            <img src="assets/logo.png" class="logo">
+            <ul id="sidemenu">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="booking.html">My Bookings</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="contact.html">contact</a></li>
+             </ul>
+        </nav>
+   
+  <section class="travel-options trains-active">
+    <div class="option-card" onclick="window.location.href='home.html'">
+      <svg class="travel-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50 28L32 18L14 28V32L32 28L50 32V28Z" fill="#4A90E2"/>
+        <path d="M32 18V38M20 42H44M24 46H40" stroke="#2C5AA0" stroke-width="2" stroke-linecap="round"/>
+        <ellipse cx="32" cy="42" rx="14" ry="4" fill="#6BB6FF"/>
+      </svg>
+      <h3>Flights</h3>
+    </div>
+    
+    <div class="option-card active">
+      <svg class="travel-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="12" y="24" width="40" height="20" rx="2" fill="#3B5998"/>
+        <rect x="16" y="28" width="12" height="12" fill="#5A7BC1"/>
+        <rect x="32" y="28" width="12" height="12" fill="#5A7BC1"/>
+        <circle cx="20" cy="46" r="3" fill="#2C3E50"/>
+        <circle cx="44" cy="46" r="3" fill="#2C3E50"/>
+        <path d="M8 32H12M52 32H56" stroke="#2C5AA0" stroke-width="2"/>
+      </svg>
+      <h3>Trains</h3>
+    </div>
+    
+    <div class="option-card" onclick="window.location.href='buses.html'">
+      <svg class="travel-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="14" y="18" width="36" height="26" rx="3" fill="#34495E"/>
+        <rect x="18" y="22" width="14" height="10" fill="#5DADE2"/>
+        <rect x="34" y="22" width="12" height="10" fill="#5DADE2"/>
+        <circle cx="22" cy="46" r="3" fill="#2C3E50"/>
+        <circle cx="42" cy="46" r="3" fill="#2C3E50"/>
+        <path d="M14 18L18 12H46L50 18" fill="#2C3E50"/>
+      </svg>
+      <h3>Buses</h3>
+    </div>
+  </section>
+
+  <!-- Cheapest Train Fares -->
+  <section class="destinations-section">
+    <h2>Cheapest Train Fares From <select class="city-select" id="trainCitySelector" onchange="updateTrainDestinations()">
+      <option value="Delhi">New Delhi</option>
+      <option value="Mumbai">Mumbai</option>
+      <option value="Bangalore">Bangalore</option>
+      <option value="Chennai">Chennai</option>
+      <option value="Kolkata">Kolkata</option>
+      <option value="Hyderabad">Hyderabad</option>
+      <option value="Pune">Pune</option>
+      <option value="Ahmedabad">Ahmedabad</option>
+      <option value="Jaipur">Jaipur</option>
+      <option value="Lucknow">Lucknow</option>
+    </select></h2>
+    <div class="destinations-scroll" id="trainDestinations"></div>
+  </section>
+
+  <section class="search-box">
+    <h2>Search Trains</h2>
+    <input id="from" type="text" placeholder="From (e.g. Delhi)">
+    <input id="to" type="text" placeholder="To (e.g. Mumbai)">
+    <input id="date" type="date" class="date-input" placeholder="Select date">
+    <button type="button" onclick="searchTrains()">Search</button>
+  </section>
+
+  <section class="results">
+    <h2>Available Trains</h2>
+    <ul id="train-list"></ul>
+  </section>
+  <footer class="footer">
+    <p>&copy; 2025 AVIGO. All Rights Reserved.</p>
+  </footer>
+</div>
+</div>
+  <script src="trains.js"></script>
+  <script>
+    const cityImages = {Goa: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400', Mumbai: 'https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=400', Delhi: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?w=400', Bangalore: 'https://images.unsplash.com/photo-1596176530529-78163a4f7af2?w=400', Chennai: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=400', Kolkata: 'https://images.unsplash.com/photo-1558431382-27e303142255?w=400', Hyderabad: 'https://images.unsplash.com/photo-1609920658906-8223bd289001?w=400', Pune: 'https://images.unsplash.com/photo-1595658658481-d53d3f999875?w=400', Jaipur: 'https://images.unsplash.com/photo-1599661046289-e31897846e41?w=400', Ahmedabad: 'https://images.unsplash.com/photo-1621950519808-4b6f8f5e0e8e?w=400', Lucknow: 'https://images.unsplash.com/photo-1605649487212-47bdab064df7?w=400', Patna: 'https://images.unsplash.com/photo-1605649487212-47bdab064df7?w=400', Udaipur: 'https://images.unsplash.com/photo-1599661046289-e31897846e41?w=400'};
+    const destinations = {Delhi: [{city: 'Goa', state: 'India', price: 1634}, {city: 'Mumbai', state: 'Maharashtra', price: 1799}, {city: 'Bangalore', state: 'Karnataka', price: 2249}, {city: 'Jaipur', state: 'Rajasthan', price: 1680}, {city: 'Chennai', state: 'Tamil Nadu', price: 2450}, {city: 'Kolkata', state: 'West Bengal', price: 2150}], Mumbai: [{city: 'Goa', state: 'India', price: 1299}, {city: 'Delhi', state: 'NCR', price: 1799}, {city: 'Bangalore', state: 'Karnataka', price: 1950}, {city: 'Jaipur', state: 'Rajasthan', price: 2100}, {city: 'Chennai', state: 'Tamil Nadu', price: 2350}, {city: 'Pune', state: 'Maharashtra', price: 899}], Bangalore: [{city: 'Goa', state: 'India', price: 1450}, {city: 'Mumbai', state: 'Maharashtra', price: 1950}, {city: 'Delhi', state: 'NCR', price: 2249}, {city: 'Chennai', state: 'Tamil Nadu', price: 1599}, {city: 'Hyderabad', state: 'Telangana', price: 1299}, {city: 'Kolkata', state: 'West Bengal', price: 2650}], Chennai: [{city: 'Bangalore', state: 'Karnataka', price: 1599}, {city: 'Mumbai', state: 'Maharashtra', price: 2350}, {city: 'Delhi', state: 'NCR', price: 2450}, {city: 'Goa', state: 'India', price: 1899}, {city: 'Hyderabad', state: 'Telangana', price: 1450}, {city: 'Kolkata', state: 'West Bengal', price: 2550}], Kolkata: [{city: 'Delhi', state: 'NCR', price: 2150}, {city: 'Mumbai', state: 'Maharashtra', price: 2550}, {city: 'Bangalore', state: 'Karnataka', price: 2650}, {city: 'Goa', state: 'India', price: 2399}, {city: 'Chennai', state: 'Tamil Nadu', price: 2550}, {city: 'Patna', state: 'Bihar', price: 1299}], Hyderabad: [{city: 'Bangalore', state: 'Karnataka', price: 1299}, {city: 'Mumbai', state: 'Maharashtra', price: 1850}, {city: 'Delhi', state: 'NCR', price: 2150}, {city: 'Goa', state: 'India', price: 1650}, {city: 'Chennai', state: 'Tamil Nadu', price: 1450}, {city: 'Kolkata', state: 'West Bengal', price: 2450}], Pune: [{city: 'Mumbai', state: 'Maharashtra', price: 899}, {city: 'Goa', state: 'India', price: 1199}, {city: 'Delhi', state: 'NCR', price: 2050}, {city: 'Bangalore', state: 'Karnataka', price: 1850}, {city: 'Jaipur', state: 'Rajasthan', price: 2250}, {city: 'Hyderabad', state: 'Telangana', price: 1550}], Ahmedabad: [{city: 'Mumbai', state: 'Maharashtra', price: 1450}, {city: 'Delhi', state: 'NCR', price: 1850}, {city: 'Goa', state: 'India', price: 1750}, {city: 'Bangalore', state: 'Karnataka', price: 2150}, {city: 'Jaipur', state: 'Rajasthan', price: 1550}, {city: 'Pune', state: 'Maharashtra', price: 1650}], Jaipur: [{city: 'Delhi', state: 'NCR', price: 1680}, {city: 'Mumbai', state: 'Maharashtra', price: 2100}, {city: 'Goa', state: 'India', price: 2250}, {city: 'Bangalore', state: 'Karnataka', price: 2450}, {city: 'Ahmedabad', state: 'Gujarat', price: 1550}, {city: 'Udaipur', state: 'Rajasthan', price: 1299}], Lucknow: [{city: 'Delhi', state: 'NCR', price: 1450}, {city: 'Mumbai', state: 'Maharashtra', price: 2250}, {city: 'Bangalore', state: 'Karnataka', price: 2550}, {city: 'Kolkata', state: 'West Bengal', price: 1850}, {city: 'Goa', state: 'India', price: 2450}, {city: 'Patna', state: 'Bihar', price: 1199}]};
+    function updateTrainDestinations() {
+      const city = document.getElementById('trainCitySelector').value;
+      const container = document.getElementById('trainDestinations');
+      container.innerHTML = '';
+      destinations[city].forEach((dest, index) => {
+        const price = Math.round(dest.price * 0.4);
+        const trainId = `quickbook_${city}_${dest.city}_${index}`;
+        container.innerHTML += `<div class="destination-card"><img src="${cityImages[dest.city]}" alt="${dest.city}"><div class="dest-details"><h3>${dest.city}, <span>${dest.state}</span></h3><p class="date">Fri, 21 Nov</p><p class="price">₹${price} <span>onwards</span></p></div><button class="book-btn" onclick="quickBookTrain('${trainId}', '${city}', '${dest.city}', '21/11/2025', '10:00 AM', '${price}')">Book Train</button></div>`;
+      });
+    }
+    function quickBookTrain(id, from, to, date, time, price) {
+      const trainData = {id: id, from: from, to: to, date: date, time: time, price: price};
+      localStorage.setItem('selectedTrain', JSON.stringify(trainData));
+      window.location.href = 'train-booking.html';
+    }
+    updateTrainDestinations();
+  </script>
+</body>
+</html>

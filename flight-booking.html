@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AVIGO - Flight Booking</title>
+  <link rel="stylesheet" href="home.css">
+</head>
+<body>
+  <div class="background">
+   <div class="container">
+        <nav>
+            <img src="assets/logo.png" class="logo">
+            <ul id="sidemenu">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="booking.html">My Bookings</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="contact.html">contact</a></li>
+             </ul>
+        </nav>
+
+  <section class="search-box booking-form">
+    <h2>Passenger Details</h2>
+    <div id="flight-info"></div>
+    <input id="name" type="text" placeholder="Full Name">
+    <input id="age" type="number" placeholder="Age">
+    <input id="email" type="email" placeholder="Email">
+    <input id="phone" type="tel" placeholder="Phone Number">
+    <button type="button" onclick="confirmFlightBooking()">Confirm Booking</button>
+  </section>
+</div>
+</div>
+  <script>
+    const selectedFlightData = JSON.parse(localStorage.getItem("selectedFlight"));
+
+    if (selectedFlightData) {
+      document.getElementById("flight-info").innerHTML =
+        `<p><strong>Selected Flight:</strong> ${selectedFlightData.from} → ${selectedFlightData.to} | ${selectedFlightData.date} | ${selectedFlightData.time} | ${selectedFlightData.price}</p>`;
+    }
+    
+    function confirmFlightBooking() {
+      const name = document.getElementById("name").value;
+      const age = document.getElementById("age").value;
+      const email = document.getElementById("email").value;
+      const phone = document.getElementById("phone").value;
+      
+      if (!name || !age || !email || !phone) {
+        alert("Please fill all fields!");
+        return;
+      }
+      
+      const flightBookings = JSON.parse(localStorage.getItem("flightBookings")) || [];
+      flightBookings.push(selectedFlightData);
+      localStorage.setItem("flightBookings", JSON.stringify(flightBookings));
+      
+      alert("Flight booking confirmed for " + name);
+      window.location.href = "booking.html";
+    }
+  </script>
+</body>
+</html>

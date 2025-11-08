@@ -3,7 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AVIGO</title>
+    <title>Contact Us - AVIGO</title>
+    
+    <meta name="title" content="Contact AVIGO | 24/7 Travel Support">
+    <meta name="description" content="Get in touch with AVIGO for travel booking support. Available 24/7 for flights, trains, and bus bookings across India.">
+    <meta name="keywords" content="AVIGO Contact, Travel Support, Customer Service, Flight Booking Help, Train Booking Support">
+    <meta name="author" content="AVIGO">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:title" content="Contact AVIGO | 24/7 Travel Support">
+    <meta property="og:description" content="Get in touch with AVIGO for travel booking support. Available 24/7.">
+    <meta property="og:image" content="assets/icon.png">
+    <meta property="og:type" content="website">
+    
+    <link rel="icon" type="image/png" href="assets/icon.png">
     <script src="https://kit.fontawesome.com/1c12915e9f.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -86,7 +99,7 @@ nav ul li a:hover::after{
 }
     .contact{
         position: relative;
-         margin: 105px auto 0 auto;
+         margin: 40px 20px;
         width: 550px;
         height: 490px;
         padding: 30px;
@@ -97,6 +110,11 @@ nav ul li a:hover::after{
         box-shadow: 0 8px 32px rgba(253, 253, 253, 0.2);
         border: 1px solid rgba(255, 255, 255, 0.3);
         color: #02326c;
+        text-align: center;
+        display: inline-block;
+        vertical-align: top;
+    }
+    body {
         text-align: center;
     }
     .contact h4{
@@ -139,6 +157,144 @@ nav ul li a:hover::after{
     font-weight: 400;
 }
 
+.about-section {
+  max-width: 800px;
+  margin: 105px auto 40px auto;
+  padding: 30px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.about-section h2 {
+  color: #ff0095;
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.about-section p {
+  color: #333;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.info-scroll-section {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.info-scroll-section h2 {
+  text-align: center;
+  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.info-scroll-container {
+  width: 120%;
+  margin-left: -10%;
+  overflow: hidden;
+  position: relative;
+}
+
+.info-scroll-content {
+  display: flex;
+  gap: 20px;
+  animation: scroll 20s linear infinite;
+}
+
+.info-scroll-content:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.info-card {
+  min-width: 280px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-10px);
+}
+
+.info-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.info-card h3 {
+  color: #ff0095;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.info-card p {
+  color: #555;
+  font-size: 1rem;
+}
+
+.contact-info {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.info-box {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.info-box i {
+  font-size: 2.5rem;
+  color: #ff0095;
+  margin-bottom: 15px;
+}
+
+.info-box h3 {
+  color: #333;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.info-box p {
+  color: #666;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+  .info-card {
+    min-width: 250px;
+  }
+}
+
     </style>
      <div class="container">
             <nav>
@@ -151,8 +307,75 @@ nav ul li a:hover::after{
                  </ul>
                 </nav>
      </div>
+
+  <!-- About Section -->
+  <section class="about-section">
+    <h2>About AVIGO</h2>
+    <p>AVIGO is your trusted travel companion, offering seamless booking experiences for flights, trains, and buses across India. <strong>With our AI-powered platform</strong>, we make travel planning effortless and efficient.</p>
+  </section>
+
+  <!-- Scrolling Info Section -->
+  <section class="info-scroll-section">
+    <h2>Why Travelers Love AVIGO</h2>
+    <div class="info-scroll-container">
+      <div class="info-scroll-content">
+        <div class="info-card">
+          <div class="info-icon">🎯</div>
+          <h3>Smart Booking</h3>
+          <p>AI-powered recommendations for best routes and prices</p>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">💰</div>
+          <h3>Best Deals</h3>
+          <p>Compare prices across multiple operators instantly</p>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">⚡</div>
+          <h3>Quick Process</h3>
+          <p>Book your tickets in less than 2 minutes</p>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">🔐</div>
+          <h3>100% Safe</h3>
+          <p>Secure payment gateway with encryption</p>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">📱</div>
+          <h3>Mobile Friendly</h3>
+          <p>Book on-the-go from any device</p>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">🎁</div>
+          <h3>Rewards Program</h3>
+          <p>Earn points on every booking</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Info -->
+  <section class="contact-info">
+    <div class="info-grid">
+      <div class="info-box">
+        <i class="fa-solid fa-envelope"></i>
+        <h3>Email Us</h3>
+        <p>support@avigo.com</p>
+      </div>
+      <div class="info-box">
+        <i class="fa-solid fa-phone"></i>
+        <h3>Call Us</h3>
+        <p>1800-123-4567</p>
+      </div>
+      <div class="info-box">
+        <i class="fa-solid fa-clock"></i>
+        <h3>Support Hours</h3>
+        <p>24/7 Available</p>
+      </div>
+    </div>
+  </section>
+
     <div class="contact">
-                <h4>Leave your message here<i class="fa-solid fa-arrow-down"></i></h4>
+                <h4>Leave your feedback here<i class="fa-solid fa-arrow-down"></i></h4>
                 <form name="submit-to-google-sheet">
                     <input type="text" name="Name" placeholder="Your Name" required>
                     <input type="email" name="Email" placeholder="Your Email" required>
@@ -160,6 +383,18 @@ nav ul li a:hover::after{
                     <button type="submit" class="button">Submit</button>
                 </form>
                 <span id="msg"></span>
+            </div>
+
+    <div class="contact developer-contact" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); background-size: cover; background-position: center;">
+                <h4 style="color: white;">Connect to Developer <i class="fa-solid fa-code"></i></h4>
+                <div class="developer-info">
+                    <i class="fa-solid fa-laptop-code" style="font-size: 4rem; color: #ffbb00; margin: 20px 0;"></i>
+                    <p style="font-size: 1.1rem; margin: 20px 0; color: white; font-weight: 600;">Want to know more about the developer behind AVIGO?</p>
+                    <p style="font-size: 1rem; margin: 15px 0; color: white;">Visit the portfolio to explore projects, skills, and get in touch!</p>
+                    <button class="button" onclick="window.open('https://bala-jee12.netlify.app', '_blank')" style="margin-top: 30px;">
+                        <i class="fa-solid fa-external-link-alt"></i> Visit Portfolio
+                    </button>
+                </div>
             </div>
 
  <script>
@@ -181,6 +416,13 @@ nav ul li a:hover::after{
       })
       .catch(error => console.error('Error!', error.message))
   })
+
+  // Duplicate scroll content for infinite effect
+  const infoScrollContent = document.querySelector('.info-scroll-content');
+  if (infoScrollContent) {
+    const cards = infoScrollContent.innerHTML;
+    infoScrollContent.innerHTML += cards;
+  }
 </script>  
 <script>
 (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="7RwUFj4IMskUQOrbCNeSP";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
