@@ -51,3 +51,21 @@ body {
 .fade-out {
   opacity: 0;
 }
+
+@media (max-width: 768px) {
+    #skip-btn {
+        bottom: 20px;
+        right: 20px;
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    #skip-btn {
+        bottom: 15px;
+        right: 15px;
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}

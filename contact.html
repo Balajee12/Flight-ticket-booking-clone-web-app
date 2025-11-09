@@ -13,8 +13,14 @@
     
     <meta property="og:title" content="Contact AVIGO | 24/7 Travel Support">
     <meta property="og:description" content="Get in touch with AVIGO for travel booking support. Available 24/7.">
-    <meta property="og:image" content="assets/icon.png">
+    <meta property="og:image" content="https://avi-go.netlify.app/assets/icon.png">
+    <meta property="og:url" content="https://avi-go.netlify.app/contact.html">
     <meta property="og:type" content="website">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contact AVIGO | 24/7 Travel Support">
+    <meta name="twitter:description" content="Get in touch with AVIGO for travel booking support. Available 24/7.">
+    <meta name="twitter:image" content="https://avi-go.netlify.app/assets/icon.png">
     
     <link rel="icon" type="image/png" href="assets/icon.png">
     <script src="https://kit.fontawesome.com/1c12915e9f.js" crossorigin="anonymous"></script>
@@ -287,11 +293,102 @@ nav ul li a:hover::after{
 }
 
 @media (max-width: 768px) {
+  nav {
+    width: 98%;
+    padding: 5px 10px;
+    height: auto;
+  }
+  .logo {
+    width: 100px;
+    height: 28px;
+  }
+  nav ul li {
+    margin: 5px 8px;
+  }
+  nav ul li a {
+    font-size: 14px;
+  }
+  .about-section {
+    margin: 80px auto 30px;
+    padding: 20px;
+    width: 95%;
+  }
+  .about-section h2 {
+    font-size: 1.5rem;
+  }
+  .about-section p {
+    font-size: 1rem;
+  }
+  .info-scroll-section h2 {
+    font-size: 1.5rem;
+  }
+  .info-scroll-container {
+    width: 100%;
+    margin-left: 0;
+  }
   .info-grid {
     grid-template-columns: 1fr;
   }
   .info-card {
     min-width: 250px;
+  }
+  .contact {
+    width: 90%;
+    max-width: 500px;
+    height: auto;
+    margin: 20px auto;
+    display: block;
+  }
+  form input, form textarea {
+    width: 93%;
+    font-size: 16px;
+  }
+  .button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  nav ul li {
+    margin: 5px 5px;
+  }
+  nav ul li a {
+    font-size: 12px;
+  }
+  .logo {
+    width: 80px;
+    height: 24px;
+  }
+  .about-section {
+    margin: 70px auto 20px;
+    padding: 15px;
+  }
+  .about-section h2 {
+    font-size: 1.3rem;
+  }
+  .about-section p {
+    font-size: 0.9rem;
+  }
+  .info-scroll-section h2 {
+    font-size: 1.3rem;
+  }
+  .info-card {
+    min-width: 220px;
+    padding: 20px;
+  }
+  .info-icon {
+    font-size: 2.5rem;
+  }
+  .contact {
+    width: 95%;
+    padding: 20px;
+  }
+  .contact h4 {
+    font-size: 18px;
+  }
+  form input, form textarea {
+    font-size: 14px;
+    padding: 12px;
   }
 }
 
@@ -385,14 +482,17 @@ nav ul li a:hover::after{
                 <span id="msg"></span>
             </div>
 
-    <div class="contact developer-contact" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); background-size: cover; background-position: center;">
+    <div class="contact developer-contact" style="background: linear-gradient(135deg, rgba(128, 0, 128, 0.5), rgba(255, 215, 0, 0.5)), url('assets/connect.jpg') center/cover; position: relative; border: 2px solid white;">
                 <h4 style="color: white;">Connect to Developer <i class="fa-solid fa-code"></i></h4>
                 <div class="developer-info">
                     <i class="fa-solid fa-laptop-code" style="font-size: 4rem; color: #ffbb00; margin: 20px 0;"></i>
-                    <p style="font-size: 1.1rem; margin: 20px 0; color: white; font-weight: 600;">Want to know more about the developer behind AVIGO?</p>
-                    <p style="font-size: 1rem; margin: 15px 0; color: white;">Visit the portfolio to explore projects, skills, and get in touch!</p>
-                    <button class="button" onclick="window.open('https://bala-jee12.netlify.app', '_blank')" style="margin-top: 30px;">
-                        <i class="fa-solid fa-external-link-alt"></i> Visit Portfolio
+                    <p style="font-size: 1.1rem; margin: 20px 0; color: white; font-weight: 600;">Want to know more about the developers behind AVIGO?</p>
+                    <p style="font-size: 1rem; margin: 15px 0; color: white;">Visit the portfolios to explore projects, skills, and get in touch!</p>
+                    <button class="button" onclick="window.open('https://bala-jee12.netlify.app', '_blank')" style="margin-top: 20px;">
+                        <i class="fa-solid fa-external-link-alt"></i> Developer 1
+                    </button>
+                    <button class="button" onclick="window.open('https://deekshithuk.netlify.app', '_blank')" style="margin-top: 15px;">
+                        <i class="fa-solid fa-external-link-alt"></i> Developer 2
                     </button>
                 </div>
             </div>

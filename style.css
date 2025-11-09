@@ -179,3 +179,60 @@ input[type="submit"]:hover{
     color: red;
 }
 
+@media (max-width: 768px) {
+    nav {
+        width: 98%;
+        padding: 5px 10px;
+        height: auto;
+    }
+    .logo {
+        width: 100px;
+        height: 28px;
+    }
+    nav ul li {
+        margin: 5px 8px;
+    }
+    nav ul li a {
+        font-size: 14px;
+    }
+    .content {
+        width: 90%;
+        max-width: 350px;
+        padding: 25px;
+    }
+    .inputBx {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul li {
+        margin: 5px 5px;
+    }
+    nav ul li a {
+        font-size: 12px;
+    }
+    .logo {
+        width: 80px;
+        height: 24px;
+    }
+    .content {
+        width: 95%;
+        padding: 20px;
+    }
+    h2 {
+        font-size: 1.3rem;
+    }
+    .inputBx input {
+        font-size: 14px;
+        padding: 10px;
+    }
+    input[type="submit"] {
+        font-size: 14px;
+        padding: 10px;
+    }
+    .links a {
+        font-size: 12px;
+    }
+}
+

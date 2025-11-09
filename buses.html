@@ -13,10 +13,17 @@
   
   <meta property="og:title" content="Bus Booking | AVIGO">
   <meta property="og:description" content="Book bus tickets online with AVIGO. Best prices and instant confirmation.">
-  <meta property="og:image" content="assets/icon.png">
+  <meta property="og:image" content="https://avi-go.netlify.app/assets/icon.png">
+  <meta property="og:url" content="https://avi-go.netlify.app/buses.html">
   <meta property="og:type" content="website">
   
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bus Booking | AVIGO">
+  <meta name="twitter:description" content="Book bus tickets online with AVIGO. Best prices and instant confirmation.">
+  <meta name="twitter:image" content="https://avi-go.netlify.app/assets/icon.png">
+  
   <link rel="icon" type="image/png" href="assets/icon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="home.css">
 </head>
 <body>
@@ -34,35 +41,17 @@
    
   <section class="travel-options buses-active">
     <div class="option-card" onclick="window.location.href='home.html'">
-      <svg class="travel-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M50 28L32 18L14 28V32L32 28L50 32V28Z" fill="#4A90E2"/>
-        <path d="M32 18V38M20 42H44M24 46H40" stroke="#2C5AA0" stroke-width="2" stroke-linecap="round"/>
-        <ellipse cx="32" cy="42" rx="14" ry="4" fill="#6BB6FF"/>
-      </svg>
+      <i class="fas fa-plane travel-icon"></i>
       <h3>Flights</h3>
     </div>
     
     <div class="option-card" onclick="window.location.href='trains.html'">
-      <svg class="travel-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="12" y="24" width="40" height="20" rx="2" fill="#3B5998"/>
-        <rect x="16" y="28" width="12" height="12" fill="#5A7BC1"/>
-        <rect x="32" y="28" width="12" height="12" fill="#5A7BC1"/>
-        <circle cx="20" cy="46" r="3" fill="#2C3E50"/>
-        <circle cx="44" cy="46" r="3" fill="#2C3E50"/>
-        <path d="M8 32H12M52 32H56" stroke="#2C5AA0" stroke-width="2"/>
-      </svg>
+      <i class="fas fa-train travel-icon"></i>
       <h3>Trains</h3>
     </div>
     
     <div class="option-card active">
-      <svg class="travel-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="14" y="18" width="36" height="26" rx="3" fill="#34495E"/>
-        <rect x="18" y="22" width="14" height="10" fill="#5DADE2"/>
-        <rect x="34" y="22" width="12" height="10" fill="#5DADE2"/>
-        <circle cx="22" cy="46" r="3" fill="#2C3E50"/>
-        <circle cx="42" cy="46" r="3" fill="#2C3E50"/>
-        <path d="M14 18L18 12H46L50 18" fill="#2C3E50"/>
-      </svg>
+      <i class="fas fa-bus travel-icon"></i>
       <h3>Buses</h3>
     </div>
   </section>
@@ -122,5 +111,9 @@
     }
     updateBusDestinations();
   </script>
+  </script>
+  <script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="7RwUFj4IMskUQOrbCNeSP";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
 </body>
 </html>
